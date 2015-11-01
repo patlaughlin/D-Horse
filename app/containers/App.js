@@ -1,7 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import DayInput from './../components/DayInput';
+import DayHead from './../components/DayHead';
 
-export class App extends Component {
+export default class App extends Component {
   constructor(props) {
     super(props);
   }
@@ -11,16 +13,41 @@ export class App extends Component {
 
   render() {
     const { dispatch } = this.props;
+    let dayInputs = [];
+    let dayHeads  = [];
+
+    for (var i = 0; i < 7; i++) {
+      dayInputs.push(
+        <DayInput key={i}/>
+      );
+      dayHeads.push(
+        <DayHead key={i}/>
+      );
+    }
+
     return (
       <div>
-        <h1>Hello</h1>
+        <div className="row">
+          <div className="col-sm-12">
+            <table className="table table-striped">
+              <thead>
+              <tr>
+                {dayHeads}
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                {dayInputs}
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
-    )
+    );
   }
 }
 
-App.propTypes = {
-};
 
 // Which props do we want to inject, given the global state?
 // Note: use https://github.com/faassen/reselect for better performance.

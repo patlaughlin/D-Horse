@@ -11,7 +11,7 @@ const store = createStore(dHorse);
 
 render(
   <Provider store={store}>
-    <div className="container-fluid">
+    <div className="container">
       <App />
     </div>
   </Provider>,
